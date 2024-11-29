@@ -21,14 +21,19 @@ def load_agent(
     llm = ChatOpenAI(temperature=0, model_name="gpt-4o", verbose=True)
     tools = load_tools(tool_names, llm=llm)
     if strategy == "plan_and_solve":
-        planner = load_chat_planner(llm)
+        planner = load_chat_planner(llm, output_format="Thought and Action")
         executor = load_agent_executor(
             llm,
             tools,
+            output_format="Thought and Action",
+            handle_parsing_errors=True,
             verbose=True
         )
         return PlanAndExecute(planner=planner, executor=executor, verbose=True)
     
     prompt = hub.pull("hwchase17/react")
     agent = create_react_agent(llm=llm, prompt=prompt, tools=tools)
-    return AgentExecutor(agent=agent, tools=tools)
+    return AgentExecutor(agent=agent,
+                         tools=tools,
+                         handle_parsing_errors=True,
+                         verbose=True)
