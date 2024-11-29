@@ -18,9 +18,8 @@ def load_agent(
 ) -> LLMChain:
     """
     """
-    llm = ChatOpenAI(temperature=0, streaming=True)
+    llm = ChatOpenAI(temperature=0, model_name="gpt-4o", verbose=True)
     tools = load_tools(tool_names, llm=llm)
-    
     if strategy == "plan_and_solve":
         planner = load_chat_planner(llm)
         executor = load_agent_executor(

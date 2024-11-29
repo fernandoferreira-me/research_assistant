@@ -33,6 +33,8 @@ beautifulsoup4==4.12.3
     # via wikipedia
 blinker==1.9.0
     # via streamlit
+brotli==1.1.0
+    # via httpx
 cachetools==5.5.0
     # via
     #   google-auth
@@ -54,7 +56,7 @@ dataclasses-json==0.6.7
     # via langchain-community
 distro==1.9.0
     # via openai
-duckduckgo-search==6.3.7
+duckduckgo-search==5.3.1b1
     # via -r requirements.in
 feedparser==6.0.11
     # via arxiv
@@ -81,19 +83,26 @@ googleapis-common-protos==1.66.0
     # via google-api-core
 h11==0.14.0
     # via httpcore
+h2==4.1.0
+    # via httpx
+hpack==4.0.0
+    # via h2
 httpcore==1.0.7
     # via httpx
 httplib2==0.22.0
     # via
     #   google-api-python-client
     #   google-auth-httplib2
-httpx==0.27.2
+httpx[brotli,http2,socks]==0.27.2
     # via
+    #   duckduckgo-search
     #   langsmith
     #   openai
     #   wolframalpha
 httpx-sse==0.4.0
     # via langchain-community
+hyperframe==6.0.1
+    # via h2
 idna==3.10
     # via
     #   anyio
@@ -185,8 +194,6 @@ pandas==2.2.3
     # via streamlit
 pillow==11.0.0
     # via streamlit
-primp==0.8.1
-    # via duckduckgo-search
 propcache==0.2.0
     # via
     #   aiohttp
@@ -273,6 +280,8 @@ sniffio==1.3.1
     #   anyio
     #   httpx
     #   openai
+socksio==1.0.0
+    # via httpx
 soupsieve==2.6
     # via beautifulsoup4
 sqlalchemy==2.0.35

@@ -16,20 +16,22 @@ st.header("Ask your question Padawan!")
 
 strategy = st.radio(
     "Reasoning Strategy",
-    ("plan-and-solve", "zero-shot-react")
+    ("plan-and-solve", "zero-shot-react"),
 )
 
 tool_names = st.multiselect(
     "Which tools would you like to use?",
     [
+        "critical_search",
+        "llm-math",
         "ddg-search",
         "wolfram_alpha",
         "google_search",
         "wikipedia",
         "arxiv",
         "python_repl",
-        "critical_search"
-    ]
+    ],
+    ["ddg-search", "wolfram_alpha", "wikipedia"]
 )
 
 if st.sidebar.button("Clear message history"):
