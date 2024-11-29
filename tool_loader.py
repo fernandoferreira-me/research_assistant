@@ -44,8 +44,8 @@ def load_tools(
     self_ask_agent = AgentExecutor(
         agent=create_self_ask_with_search_agent(llm, [search_tool], prompt),
         tools = [search_tool],
-        verbose=True,
         handle_parsing_errors=True,
+        verbose=True,
     )
     
     available_tools = {
